@@ -180,7 +180,7 @@ fwupd
 gtkmm3
 open-vm-tools
 xf86-input-vmmouse
-xf86-video-vmware
+#xf86-video-vmware
 #######################################################
 #nvidia
 #docker
@@ -228,3 +228,4 @@ corekeyboard
 system-config-printer
 catos-fix-storage
 tela-icon-theme-git
+gparted
