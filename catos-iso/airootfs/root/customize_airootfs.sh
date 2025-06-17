@@ -8,13 +8,13 @@ set -e -u
 
 ## lsb-release
 rm /etc/lsb-release
-touch /etc/catos-lsb-release
-ln -s /etc/catos-lsb-release /etc/lsb-release
+touch /etc/workos-lsb-release
+ln -s /etc/workos-lsb-release /etc/lsb-release
 cat > "/etc/lsb-release" <<- _EOF_
-	DISTRIB_ID="CatOS"
+	DISTRIB_ID="WorkOS"
 
 	DISTRIB_RELEASE="rolling"
-	DISTRIB_DESCRIPTION="CatOS"
+	DISTRIB_DESCRIPTION="WorkOS"
 
 _EOF_
 
@@ -24,20 +24,20 @@ _EOF_
 
 ## /etc/os-release
 rm /etc/os-release
-touch catos-os-release
-ln -s /etc/catos-os-release /etc/os-release
+touch workos-os-release
+ln -s /etc/workos-os-release /etc/os-release
 cat > "/etc/os-release" <<- _EOF_
-	NAME="CatOS"
-	PRETTY_NAME="CatOS"
-	ID=catos
+	NAME="WorkOS"
+	PRETTY_NAME="WorkOS"
+	ID=workos
 	BUILD_ID=rolling
 	ANSI_COLOR="38;2;23;147;209"
-	HOME_URL="https://github.com/CatOS-Home/CatOS"
-	DOCUMENTATION_URL="https://github.com/CatOS-Home/CatOS"
-	SUPPORT_URL="https://github.com/CatOS-Home/CatOS"
-	BUG_REPORT_URL="https://github.com/CatOS-Home/CatOS"
-	PRIVACY_POLICY_URL="https://github.com/CatOS-Home/CatOS"
-	LOGO=catos
+	HOME_URL="https://github.com/xxnuo/WorkOS"
+	DOCUMENTATION_URL="https://github.com/xxnuo/WorkOS"
+	SUPPORT_URL="https://github.com/xxnuo/WorkOS"
+	BUG_REPORT_URL="https://github.com/xxnuo/WorkOS"
+	PRIVACY_POLICY_URL="https://github.com/xxnuo/WorkOS"
+	LOGO=workos
 
 _EOF_
 
@@ -47,10 +47,10 @@ _EOF_
 
 ## /etc/issue
 rm /etc/issue
-touch /etc/catos-issue
-ln -s /etc/catos-issue /etc/issue
+touch /etc/workos-issue
+ln -s /etc/workos-issue /etc/issue
 cat > "/etc/issue" <<- _EOF_
-	CatOS \r (\l)
+	WorkOS \r (\l)
 
 _EOF_
 
@@ -60,10 +60,10 @@ _EOF_
 
 ## /etc/motd
 rm /etc/motd
-touch /etc/catos-motd
-ln -s /etc/catos-motd /etc/motd
+touch /etc/workos-motd
+ln -s /etc/workos-motd /etc/motd
 cat > "/etc/motd" <<- _EOF_
-To install [38;2;23;147;209mCat OS[0m follow the installation guide:
+To install [38;2;23;147;209mWork OS[0m follow the installation guide:
 https://wiki.archlinux.org/title/Installation_guide
 
 For Wi-Fi, authenticate to the wireless network using the [35miwctl[0m utility.
@@ -81,6 +81,7 @@ _EOF_
 
 ## -------------------------------------------------------------- ##
 ## 更换国内源
+echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
 echo 'Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
 echo 'Server = https://mirrors.cernet.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
 echo 'Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
@@ -88,11 +89,10 @@ echo 'Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch' >> /etc/pacm
 echo 'Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
 echo 'Server = https://mirrors.xjtu.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
 echo 'Server = https://mirrors.shanghaitech.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
-echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
 
 ## -------------------------------------------------------------- ##
 ##更换主机名
-echo "CatOS" > /etc/hostname
+echo "WorkOS" > /etc/hostname
 ## -------------------------------------------------------------- ##
 
 ## -------------------------------------------------------------- ##
@@ -103,7 +103,7 @@ echo ' ' >> /etc/pacman.conf
 ## 增加archlinuxcn源
 echo '[archlinuxcn]' >> /etc/pacman.conf
 echo 'SigLevel = Never' >> /etc/pacman.conf
-echo 'Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch' >> /etc/pacman.conf
+echo 'Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch' >> /etc/pacman.conf
 
 
 ## -------------------------------------------------------------- ##
@@ -112,13 +112,6 @@ echo 'Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch' >> /etc/pacman.con
 echo '[arch4edu]' >> /etc/pacman.conf
 echo 'SigLevel = Never' >> /etc/pacman.conf
 echo 'Server = https://mirrors.cernet.edu.cn/arch4edu/$arch' >> /etc/pacman.conf
-
-## -------------------------------------------------------------- ##
-
-## 增加catos源
-echo '[catos]' >> /etc/pacman.conf
-echo 'SigLevel = Never' >> /etc/pacman.conf
-echo 'Server = https://pkgs.catos.info/$arch' >> /etc/pacman.conf
 
 ## -------------------------------------------------------------- ##
 
@@ -160,9 +153,8 @@ ln -s /usr/lib/systemd/system/vmware-vmblock-fuse.service /etc/systemd/system/mu
 rm /etc/xdg/autostart/calamares.desktop
 
 mkdir /home/liveuser/Desktop
-mv /etc/xdg/autostart/catos.desktop /home/liveuser/Desktop/catos.desktop
-#rm /etc/xdg/autostart/catos-advanced.desktop  #暂时移除联网安装
-mv /etc/xdg/autostart/catos-advanced.desktop /home/liveuser/Desktop/catos-advanced.desktop
+mv /etc/xdg/autostart/workos.desktop /home/liveuser/Desktop/workos.desktop
+mv /etc/xdg/autostart/workos-advanced.desktop /home/liveuser/Desktop/workos-advanced.desktop
 
 
 sed -i 's/#Color/Color/g' /etc/pacman.conf
@@ -181,19 +173,19 @@ echo "SDL_IM_MODULE=fcitx" >> /etc/environment
 
 ##grub
 #echo 'GRUB_THEME="/usr/share/grub/themes/vimix-color-1080p/theme.txt"' >> /etc/default/grub
-echo 'GRUB_THEME="/usr/share/grub/themes/catos-grub-theme-dark-1080p/theme.txt"' >> /etc/default/grub
+echo 'GRUB_THEME="/usr/share/grub/themes/workos-grub-theme-dark-1080p/theme.txt"' >> /etc/default/grub
 
 echo 'GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub
 
-###修改plymounth默认主题为catos  /usr/share/plymouth/plymouthd.defaults
-#sed -i 's/bgrt/catos/g' /usr/share/plymouth/plymouthd.defaults
+###修改plymounth默认主题为workos  /usr/share/plymouth/plymouthd.defaults
+#sed -i 's/bgrt/workos/g' /usr/share/plymouth/plymouthd.defaults
 
 
 ##default icon
 #sed -i 's/start-here-kde/\/usr\/share\/icons\/catos\/catos.svg/g' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml
-sed -i 's/start-here-kde-symbolic/catos/g' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml
+sed -i 's/start-here-kde-symbolic/workos/g' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml
 ###sddm
-#sed -i 's:Current=.*:Current=sugar-candy-catos:g' /etc/sddm.conf.d/kde_settings.conf
+#sed -i 's:Current=.*:Current=sugar-candy-workos:g' /etc/sddm.conf.d/kde_settings.conf
 
 ###修改默认为x
 ###sed -i 's:Session=.*:Session=plasmax11:g' /etc/sddm.conf.d/kde_settings.conf

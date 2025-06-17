@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="catos"
-iso_label="CATOS"
-iso_publisher="CatOS"
-iso_application="CatOS Live/Rescue CD"
+iso_name="workos"
+iso_label="WORKOS"
+iso_publisher="CatWorkOS"
+iso_application="CatWorkOS Live/Rescue CD"
 iso_version="$(date +%Y.%m.%d)"
 install_dir="arch"
 buildmodes=('iso')
