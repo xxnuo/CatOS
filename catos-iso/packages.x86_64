@@ -222,7 +222,7 @@ catos-software-center
 # VM - VMware
 # ===========
 xf86-input-vmmouse
-xf86-video-vmware
+#xf86-video-vmware
 open-vm-tools
 gtkmm3
 
@@ -239,3 +239,4 @@ system-config-printer
 os-prober
 tela-icon-theme-git
 catos-fix-storage
+gparted
