@@ -7,5 +7,5 @@ CursorShape=2
 
 [General]
 Command=/bin/fish
-Name=CatOS
+Name=WorkOS
 Parent=FALLBACK/
