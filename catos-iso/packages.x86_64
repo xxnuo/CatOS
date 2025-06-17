@@ -194,9 +194,10 @@ fcitx5-pinyin-zhwiki
 fcitx5-material-color
 noto-fonts-emoji
 #######################################################
-catos-calamares
+#catos-calamares
+calamares
 #alci-calamares
-catos-calamares-config
+#catos-calamares-config
 ####################Linux Box###########################
 podman
 distrobox
